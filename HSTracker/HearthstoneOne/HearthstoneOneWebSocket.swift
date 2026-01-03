@@ -50,6 +50,10 @@ class HearthstoneOneWebSocket: NSObject {
     
     /// Connect to the WebSocket server
     func connect() {
+        // Cancel any pending reconnect
+        reconnectTimer?.invalidate()
+        reconnectTimer = nil
+        
         guard webSocketTask == nil else { return }
         
         let urlString = "ws://\(serverHost):\(serverPort)"
