@@ -2301,6 +2301,11 @@ class Game: NSObject, PowerEventHandler {
             }
 
             NotificationManager.showNotification(type: .turnStart)
+            
+            // HearthstoneOne AI: Request suggestion on player's turn
+            if Settings.hearthstoneOneEnabled && isConstructedMatch() {
+                requestHearthstoneOneSuggestion()
+            }
         }
         
         updateTurnCounter(turn: turnNumber())
@@ -4233,4 +4238,68 @@ extension Game: NSWindowDelegate {
             Settings.opponentTrackerFrame = tracker.window?.frame
         }
     }
+    
+    // MARK: - HearthstoneOne AI Integration
+    
+    /// Request AI suggestion from HearthstoneOne server
+    private func requestHearthstoneOneSuggestion() {
+        // Build game state from current entities
+        var hand: [[String: Any]] = []
+        for entity in player.hand {
+            hand.append([
+                "id": entity.cardId,
+                "name": entity.card.name,
+                "cost": entity.cost,
+                "type": entity.card.type.rawValue,
+                "requires_target": entity.card.isTargetingCard
+            ])
+        }
+        
+        var oppBoard: [[String: Any]] = []
+        for entity in opponent.board.filter({ $0.isMinion }) {
+            oppBoard.append([
+                "id": entity.cardId,
+                "attack": entity.attack,
+                "health": entity.health,
+                "position": entity.zonePosition
+            ])
+        }
+        
+        var playerBoard: [[String: Any]] = []
+        for entity in player.board.filter({ $0.isMinion }) {
+            playerBoard.append([
+                "id": entity.cardId,
+                "attack": entity.attack,
+                "health": entity.health,
+                "position": entity.zonePosition
+            ])
+        }
+        
+        let mana = player.currentMana
+        
+        // Call HearthstoneOne AI server
+        HearthstoneOneClient.shared.getSuggestion(
+            hand: hand,
+            mana: mana,
+            opponentBoard: oppBoard,
+            playerBoard: playerBoard
+        ) { [weak self] suggestion, error in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                if let error = error {
+                    logger.warning("HearthstoneOne AI error: \(error)")
+                    // TODO: Show error in overlay
+                    return
+                }
+                
+                if let suggestion = suggestion {
+                    logger.info("HearthstoneOne AI suggestion: \(suggestion.action) - \(suggestion.cardName ?? "nil")")
+                    // TODO: Update AI suggestions overlay
+                    // self.windowManager.aiSuggestionsOverlay.update(suggestion: suggestion)
+                }
+            }
+        }
+    }
 }
+
