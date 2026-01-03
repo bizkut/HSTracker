@@ -4289,17 +4289,47 @@ extension Game: NSWindowDelegate {
             DispatchQueue.main.async {
                 if let error = error {
                     logger.warning("HearthstoneOne AI error: \(error)")
-                    // TODO: Show error in overlay
+                    self.windowManager.aiSuggestionsOverlay.showError(error)
                     return
                 }
                 
                 if let suggestion = suggestion {
                     logger.info("HearthstoneOne AI suggestion: \(suggestion.action) - \(suggestion.cardName ?? "nil")")
-                    // TODO: Update AI suggestions overlay
-                    // self.windowManager.aiSuggestionsOverlay.update(suggestion: suggestion)
+                    
+                    // Update text overlay
+                    self.windowManager.aiSuggestionsOverlay.update(suggestion: suggestion)
+                    
+                    // Update arrow overlay
+                    self.windowManager.aiSuggestionsArrowOverlay.update(
+                        suggestion: suggestion,
+                        handCount: hand.count,
+                        opponentBoardCount: oppBoard.count,
+                        playerBoardCount: playerBoard.count
+                    )
+                    
+                    // Show overlays
+                    self.showAISuggestionsOverlays()
                 }
             }
         }
+    }
+    
+    /// Show AI suggestion overlays
+    private func showAISuggestionsOverlays() {
+        // Show text overlay near player tracker
+        let trackerFrame = SizeHelper.playerTrackerFrame()
+        let overlayFrame = NSRect(x: trackerFrame.minX - 180, y: trackerFrame.maxY - 100, width: 170, height: 90)
+        windowManager.show(controller: windowManager.aiSuggestionsOverlay, show: true, frame: overlayFrame, title: nil, overlay: true)
+        
+        // Show arrow overlay covering full HS window
+        let arrowFrame = SizeHelper.overHearthstoneFrame()
+        windowManager.show(controller: windowManager.aiSuggestionsArrowOverlay, show: true, frame: arrowFrame, title: nil, overlay: true)
+    }
+    
+    /// Hide AI suggestion overlays
+    private func hideAISuggestionsOverlays() {
+        windowManager.show(controller: windowManager.aiSuggestionsOverlay, show: false)
+        windowManager.show(controller: windowManager.aiSuggestionsArrowOverlay, show: false)
     }
 }
 

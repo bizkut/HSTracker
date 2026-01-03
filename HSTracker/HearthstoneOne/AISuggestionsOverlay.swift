@@ -204,6 +204,22 @@ class AISuggestionsOverlay: OverWindowController {
         return Settings.hearthstoneOneEnabled
     }
     
+    /// Programmatic initialization
+    convenience init() {
+        // Create window programmatically
+        let panel = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 170, height: 90),
+                            styleMask: [.borderless, .nonactivatingPanel],
+                            backing: .buffered,
+                            defer: false)
+        panel.isFloatingPanel = true
+        panel.backgroundColor = NSColor.clear
+        panel.isOpaque = false
+        panel.hasShadow = false
+        panel.ignoresMouseEvents = true
+        self.init(window: panel)
+        panel.contentView = suggestionsView
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         self.window!.contentView = suggestionsView

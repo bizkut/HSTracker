@@ -163,6 +163,10 @@ class WindowManager {
         return $0
     }(CountersOverlay(windowNibName: "CountersOverlay"))
 
+    // HearthstoneOne AI overlays
+    var aiSuggestionsOverlay = AISuggestionsOverlay()
+    var aiSuggestionsArrowOverlay = AISuggestionsArrowOverlay()
+
     var toastWindowController = ToastWindowController()
 
     var floatingCard: FloatingCard = {
