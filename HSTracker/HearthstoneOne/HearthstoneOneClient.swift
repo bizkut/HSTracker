@@ -54,26 +54,6 @@ struct AISuggestion: Codable {
     }
 }
 
-/// Game state sent to HearthstoneOne server
-struct GameStateRequest: Codable {
-    let hand: [[String: Any]]
-    let mana: Int
-    let opponentBoard: [[String: Any]]
-    let playerBoard: [[String: Any]]
-    
-    enum CodingKeys: String, CodingKey {
-        case hand
-        case mana
-        case opponentBoard = "opponent_board"
-        case playerBoard = "player_board"
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(mana, forKey: .mana)
-        // Note: Encoding [String: Any] requires manual JSON serialization
-    }
-}
 
 /// Client for HearthstoneOne AI suggestion server
 class HearthstoneOneClient {
@@ -97,9 +77,13 @@ class HearthstoneOneClient {
         return URLSession(configuration: config)
     }()
     
-    /// Base URL for server
+    /// Base URL for server (with fallback for invalid host)
     var baseURL: URL {
-        return URL(string: "http://\(serverHost):\(serverPort)")!
+        if let url = URL(string: "http://\(serverHost):\(serverPort)") {
+            return url
+        }
+        // Fallback to localhost if host is invalid
+        return URL(string: "http://localhost:\(serverPort)")!
     }
     
     /// Initialize with settings

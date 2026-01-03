@@ -201,8 +201,7 @@ class AISuggestionsOverlay: OverWindowController {
     
     /// Whether AI suggestions are enabled
     static var isEnabled: Bool {
-        // TODO: Read from Settings
-        return true
+        return Settings.hearthstoneOneEnabled
     }
     
     override func windowDidLoad() {
