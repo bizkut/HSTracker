@@ -1709,6 +1709,28 @@ class Game: NSObject, PowerEventHandler {
         
         counterManager.reset()
         
+        // HearthstoneOne AI: Connect WebSocket and setup callback
+        if Settings.hearthstoneOneEnabled && isConstructedMatch() {
+            HearthstoneOneWebSocket.shared.connect()
+            HearthstoneOneWebSocket.shared.resetGameState()
+            HearthstoneOneWebSocket.shared.onSuggestionReceived = { [weak self] suggestion in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    logger.info("HearthstoneOne AI suggestion: \(suggestion.action) - \(suggestion.cardName ?? "nil")")
+                    
+                    // Update overlays
+                    self.windowManager.aiSuggestionsOverlay.update(suggestion: suggestion)
+                    self.windowManager.aiSuggestionsArrowOverlay.update(
+                        suggestion: suggestion,
+                        handCount: self.player.hand.count,
+                        opponentBoardCount: self.opponent.board.filter { $0.isMinion }.count,
+                        playerBoardCount: self.player.board.filter { $0.isMinion }.count
+                    )
+                    self.showAISuggestionsOverlays()
+                }
+            }
+        }
+        
         if isTraditionalHearthstoneMatch {
             CardLegalityChecker.loadCardsByFormat(gameType: currentGameType, format: currentFormatType)
         }
@@ -2025,6 +2047,7 @@ class Game: NSObject, PowerEventHandler {
             // Hide AI suggestions overlay
             if Settings.hearthstoneOneEnabled {
                 self.hideAISuggestionsOverlays()
+                HearthstoneOneWebSocket.shared.disconnect()
             }
         }
         logger.verbose("End game: \(currentGameStats)")
@@ -2314,7 +2337,7 @@ class Game: NSObject, PowerEventHandler {
             
             // HearthstoneOne AI: Request suggestion on player's turn
             if Settings.hearthstoneOneEnabled && isConstructedMatch() {
-                requestHearthstoneOneSuggestion()
+                HearthstoneOneWebSocket.shared.requestSuggestion()
             }
         }
         

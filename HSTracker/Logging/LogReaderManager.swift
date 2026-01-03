@@ -171,6 +171,11 @@ final class LogReaderManager {
 	private func processLine(line: LogLine) {
         switch line.namespace {
         case .power:
+            // Forward to HearthstoneOne WebSocket server if enabled
+            if Settings.hearthstoneOneEnabled {
+                HearthstoneOneWebSocket.shared.sendLogLine(line.content)
+            }
+            
             if line.content.hasPrefix("GameState.") {
                 coreManager.game.add(powerLog: line)
                 if line.content.hasPrefix("GameState.DebugPrintEntityChoices") ||
