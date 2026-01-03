@@ -440,6 +440,14 @@ final class Settings {
     @UserDefault(key: Settings.show_mercs_player_abilities, defaultValue: true)
     static var showMercsPlayerAbilities
 
+    // MARK: - HearthstoneOne AI
+    @UserDefault(key: Settings.hearthstone_one_enabled, defaultValue: false)
+    static var hearthstoneOneEnabled: Bool
+    @UserDefault(key: Settings.hearthstone_one_host, defaultValue: "localhost")
+    static var hearthstoneOneHost: String
+    @UserDefault(key: Settings.hearthstone_one_port, defaultValue: 9876)
+    static var hearthstoneOnePort: Int
+
     // MARK: - Importing
     @UserDefault(key: Settings.import_dungeon_include_passives, defaultValue: true)
     static var importDungeonIncludePassives: Bool
@@ -676,6 +684,11 @@ extension Settings {
     static let show_mercs_tasks = "show_mercs_tasks"
     static let show_mercs_opponent_abilities = "show_mercs_opponent_abilities"
     static let show_mercs_player_abilities = "show_mercs_player_abilities"
+    
+    // MARK: - HearthstoneOne AI
+    static let hearthstone_one_enabled = "hearthstone_one_enabled"
+    static let hearthstone_one_host = "hearthstone_one_host"
+    static let hearthstone_one_port = "hearthstone_one_port"
     
     // MARK: - HSReplay.net related preferences
     static let hsreplay_upload_token = "hsreplay_upload_token"
