@@ -2021,6 +2021,11 @@ class Game: NSObject, PowerEventHandler {
         // clear any left over hover
         DispatchQueue.main.async {
             self.windowManager.forceHideFloatingCard()
+            
+            // Hide AI suggestions overlay
+            if Settings.hearthstoneOneEnabled {
+                self.hideAISuggestionsOverlays()
+            }
         }
         logger.verbose("End game: \(currentGameStats)")
         let stats = currentGameStats.toGameStats()
@@ -2259,6 +2264,11 @@ class Game: NSObject, PowerEventHandler {
             handlePlayerEndOfTurn(playerTurn.turn - 1)
             self.player.onTurnEnd()
             secretsManager?.handleOpponentTurnStart()
+            
+            // Hide AI suggestions when opponent's turn starts
+            if Settings.hearthstoneOneEnabled {
+                hideAISuggestionsOverlays()
+            }
         }
 
         if turnQueue.count > 0 {
