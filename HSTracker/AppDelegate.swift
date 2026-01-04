@@ -51,7 +51,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegat
             OpponentTrackersPreferences(nibName: "OpponentTrackersPreferences", bundle: nil),
             BattlegroundsPreferences(nibName: "BattlegroundsPreferences", bundle: nil),
             MercenariesPreferences(nibName: "MercenariesPreferences", bundle: nil),
-            ImportingPreferences(nibName: "ImportingPreferences", bundle: nil)
+            ImportingPreferences(nibName: "ImportingPreferences", bundle: nil),
+            HearthstoneOnePreferences()
         ]
         return PreferencesWindowController(preferencePanes: panes, style: .toolbarItems, animated: false)
     }()

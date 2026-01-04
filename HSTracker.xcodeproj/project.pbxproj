@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0640A5B82F0ACEA4003B3802 /* HearthstoneOnePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640A5B72F0ACEA4003B3802 /* HearthstoneOnePreferences.swift */; };
+		0640A5B92F0ACEA4003B3802 /* HearthstoneOnePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640A5B72F0ACEA4003B3802 /* HearthstoneOnePreferences.swift */; };
+		06FCDDB82F0AC82000BD1EFF /* AISuggestionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FCDDB42F0AC82000BD1EFF /* AISuggestionsOverlay.swift */; };
+		06FCDDB92F0AC82000BD1EFF /* HearthstoneOneWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FCDDB62F0AC82000BD1EFF /* HearthstoneOneWebSocket.swift */; };
+		06FCDDBA2F0AC82000BD1EFF /* AISuggestionsArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FCDDB32F0AC82000BD1EFF /* AISuggestionsArrowView.swift */; };
+		06FCDDBB2F0AC82000BD1EFF /* HearthstoneOneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FCDDB52F0AC82000BD1EFF /* HearthstoneOneClient.swift */; };
 		1C132F821DBA24C1002B1BF2 /* AppHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C132F811DBA24C1002B1BF2 /* AppHealth.swift */; };
 		1C17D24C1E82C81700ED4047 /* LogEventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17D24B1E82C81700ED4047 /* LogEventParser.swift */; };
 		1C17D2521E82DEE700ED4047 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17D2511E82DEE700ED4047 /* RealmHelper.swift */; };
@@ -1456,6 +1462,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0640A5B72F0ACEA4003B3802 /* HearthstoneOnePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneOnePreferences.swift; sourceTree = "<group>"; };
+		06FCDDB32F0AC82000BD1EFF /* AISuggestionsArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISuggestionsArrowView.swift; sourceTree = "<group>"; };
+		06FCDDB42F0AC82000BD1EFF /* AISuggestionsOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISuggestionsOverlay.swift; sourceTree = "<group>"; };
+		06FCDDB52F0AC82000BD1EFF /* HearthstoneOneClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneOneClient.swift; sourceTree = "<group>"; };
+		06FCDDB62F0AC82000BD1EFF /* HearthstoneOneWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneOneWebSocket.swift; sourceTree = "<group>"; };
 		1C132F811DBA24C1002B1BF2 /* AppHealth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHealth.swift; sourceTree = "<group>"; };
 		1C17D24B1E82C81700ED4047 /* LogEventParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventParser.swift; sourceTree = "<group>"; };
 		1C17D2511E82DEE700ED4047 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
@@ -2842,6 +2853,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06FCDDB72F0AC82000BD1EFF /* HearthstoneOne */ = {
+			isa = PBXGroup;
+			children = (
+				06FCDDB32F0AC82000BD1EFF /* AISuggestionsArrowView.swift */,
+				06FCDDB42F0AC82000BD1EFF /* AISuggestionsOverlay.swift */,
+				06FCDDB52F0AC82000BD1EFF /* HearthstoneOneClient.swift */,
+				06FCDDB62F0AC82000BD1EFF /* HearthstoneOneWebSocket.swift */,
+			);
+			path = HearthstoneOne;
+			sourceTree = "<group>";
+		};
 		1CCB4AE91E8A46F0003FD1AD /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2965,6 +2987,7 @@
 				432B5FBE1CB5373200B05D19 /* Splashscreen.xib */,
 				437B5BC11CD2568100DE0A41 /* TrackersPreferences.swift */,
 				437B5BC31CD2568E00DE0A41 /* TrackersPreferences.xib */,
+				0640A5B72F0ACEA4003B3802 /* HearthstoneOnePreferences.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -3100,6 +3123,7 @@
 				C99C0C9B1D0A607D000DD6FB /* Statistics */,
 				439C7ECD1C777FA900D29859 /* UIs */,
 				437B5BB11CD2437D00DE0A41 /* Utility */,
+				06FCDDB72F0AC82000BD1EFF /* HearthstoneOne */,
 			);
 			path = HSTracker;
 			sourceTree = "<group>";
@@ -4751,15 +4775,14 @@
 		439C7E401C7772C000D29859 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 2620;
 				ORGANIZATIONNAME = "Benjamin Michotte";
 				TargetAttributes = {
 					439C7E471C7772C000D29859 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = RL7C49LAMC;
 						LastSwiftMigration = 1220;
-						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -5268,6 +5291,10 @@
 				B8BD3BB22C4360B1001E85B7 /* BattlegroundsCompositionStatsRow.swift in Sources */,
 				43D308041C842DC000480488 /* GeneralPreferences.swift in Sources */,
 				B8621F1A2746A785004DD0E9 /* Account.swift in Sources */,
+				06FCDDB82F0AC82000BD1EFF /* AISuggestionsOverlay.swift in Sources */,
+				06FCDDB92F0AC82000BD1EFF /* HearthstoneOneWebSocket.swift in Sources */,
+				06FCDDBA2F0AC82000BD1EFF /* AISuggestionsArrowView.swift in Sources */,
+				06FCDDBB2F0AC82000BD1EFF /* HearthstoneOneClient.swift in Sources */,
 				B846CC322E05F67700552F9C /* Felgorger.swift in Sources */,
 				4323C5E81E16963200C97896 /* MatchInfo.swift in Sources */,
 				B898657A2D91AF5500BA5649 /* Arcanologist.swift in Sources */,
@@ -5747,6 +5774,7 @@
 				B80B690C2E3C3F5A00197FA5 /* WebOfDeception.swift in Sources */,
 				B89343462CD11D03009A8727 /* JadeGolemCounter.swift in Sources */,
 				B8E1E5F82D0CA0E300383975 /* TwilightsCall.swift in Sources */,
+				0640A5B82F0ACEA4003B3802 /* HearthstoneOnePreferences.swift in Sources */,
 				B86D89EE2D95EDBE00AB65A5 /* WyvernsSlumber.swift in Sources */,
 				B86D8A242D95FFDA00AB65A5 /* ArchdruidOfThorns.swift in Sources */,
 				B8E1E5AC2D0C708900383975 /* GrandMagisterRommath.swift in Sources */,
@@ -6241,6 +6269,7 @@
 				43C1CA421E96CD6F008C20B1 /* Shaman.swift in Sources */,
 				43C1CA431E96CD6F008C20B1 /* Warlock.swift in Sources */,
 				43C1CA441E96CD6F008C20B1 /* Warrior.swift in Sources */,
+				0640A5B92F0ACEA4003B3802 /* HearthstoneOnePreferences.swift in Sources */,
 				43C1CA451E96CD6F008C20B1 /* LogEventParser.swift in Sources */,
 				43C1CA461E96CD6F008C20B1 /* PowerGameStateParser.swift in Sources */,
 				43C1CA471E96CD6F008C20B1 /* TagChangeHandler.swift in Sources */,
@@ -6857,9 +6886,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -6879,6 +6910,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -6913,9 +6945,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -6928,6 +6962,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -6939,8 +6974,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HSTracker/HSTracker.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 79Q3F6TL26;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6963,7 +7003,7 @@
 					"$(PROJECT_DIR)/downloaded-frameworks/mono/runtimes/osx-x64/native",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 3.4.5;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -6975,6 +7015,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.hearthsim.hstracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = YES;
+				RUNTIME_EXCEPTION_ALLOW_JIT = YES;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = YES;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HSTracker/HSTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -6989,9 +7033,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HSTracker/HSTracker.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 79Q3F6TL26;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7014,7 +7063,7 @@
 					"$(PROJECT_DIR)/downloaded-frameworks/mono/runtimes/osx-x64/native",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 3.4.5;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
@@ -7024,6 +7073,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.hearthsim.hstracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = YES;
+				RUNTIME_EXCEPTION_ALLOW_JIT = YES;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = YES;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HSTracker/HSTracker-Bridging-Header.h";
@@ -7040,6 +7093,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RL7C49LAMC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7074,6 +7128,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RL7C49LAMC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

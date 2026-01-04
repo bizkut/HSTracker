@@ -2290,7 +2290,9 @@ class Game: NSObject, PowerEventHandler {
             
             // Hide AI suggestions when opponent's turn starts
             if Settings.hearthstoneOneEnabled {
-                hideAISuggestionsOverlays()
+                DispatchQueue.main.async {
+                    self.hideAISuggestionsOverlays()
+                }
             }
         }
 
@@ -4282,9 +4284,8 @@ extension Game: NSWindowDelegate {
             hand.append([
                 "id": entity.cardId,
                 "name": entity.card.name,
-                "cost": entity.cost,
-                "type": entity.card.type.rawValue,
-                "requires_target": entity.card.isTargetingCard
+                "cost": entity[.cost],
+                "type": entity.card.type.rawValue
             ])
         }
         
@@ -4347,6 +4348,7 @@ extension Game: NSWindowDelegate {
         }
     }
     
+    @MainActor
     /// Show AI suggestion overlays
     private func showAISuggestionsOverlays() {
         // Show text overlay near player tracker
@@ -4359,6 +4361,7 @@ extension Game: NSWindowDelegate {
         windowManager.show(controller: windowManager.aiSuggestionsArrowOverlay, show: true, frame: arrowFrame, title: nil, overlay: true)
     }
     
+    @MainActor
     /// Hide AI suggestion overlays
     private func hideAISuggestionsOverlays() {
         windowManager.show(controller: windowManager.aiSuggestionsOverlay, show: false)

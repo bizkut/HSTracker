@@ -1,5 +1,5 @@
 {
-  "originHash" : "69c3849bf96fe2e3473f804dadf0330ecd23511ddea5ee0bd6d80204cb6ffb04",
+  "originHash" : "449de6b4532c0f8818fdb8405c86b9ec183cd349534f1380ca9667b8a569cd3e",
   "pins" : [
     {
       "identity" : "appmover",
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tid-kijyun/Kanna.git",
       "state" : {
-        "revision" : "f9e4922223dd0d3dfbf02ca70812cf5531fc0593",
-        "version" : "5.2.7"
+        "revision" : "41c3d28ea0eac07e4551b28def9de1ede702e739",
+        "version" : "5.3.0"
       }
     },
     {

@@ -193,9 +193,8 @@ class HearthstoneOneClient {
             hand.append([
                 "id": entity.cardId,
                 "name": entity.card.name,
-                "cost": entity.cost,
-                "type": entity.card.type.rawValue,
-                "requires_target": entity.card.isTargetingCard
+                "cost": entity[.cost],
+                "type": entity.card.type.rawValue
             ])
         }
         
